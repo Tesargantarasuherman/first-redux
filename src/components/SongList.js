@@ -37,6 +37,12 @@ class SongList extends Component {
 const mapStateToProps = state => {
     return { songs: state.songs }
 }
-export default connect(mapStateToProps,{
-    selectSong:selectSong
-})(SongList);
+const mapDispatchToProps = dispatch=>{
+    return {
+        selectSong : (song) => dispatch(selectSong(song))
+    }
+}
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(SongList);
