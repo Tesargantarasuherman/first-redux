@@ -3,6 +3,8 @@ import './App.css';
 import actions, { selectSong } from './actions'
 import SongList from './components/SongList';
 import SongDetail from './components/SongDetail';
+import PostList from './components/PostList';
+
 function App() {
   return (
     <div className="App">
@@ -12,6 +14,11 @@ function App() {
         </div>
         <div className="col-md-6">
           <SongDetail />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-md-6">
+          <PostList />
         </div>
       </div>
     </div>
