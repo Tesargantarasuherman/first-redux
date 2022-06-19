@@ -1,11 +1,8 @@
 import { combineReducers } from 'redux';
-import Axios from 'axios'
 import postReducers from './postReducers';
+import userReducers from './userReducers';
 
 const songsReducer = () => {
-  // Axios.get(`https://jsonplaceholder.typicode.com/posts`).then(res=>{
-  //   return res.data
-  // })
   return [
     { title: 'No Scrubs', duration: '4:05' },
     { title: 'Macarena', duration: '2:30' },
@@ -27,6 +24,7 @@ const selectedSongReducer = (state = null, action) => {
 const reducers = combineReducers({
   songs: songsReducer,
   selectedSong: selectedSongReducer,
-  posts:postReducers
+  posts:postReducers,
+  users:userReducers
 });
 export default reducers
