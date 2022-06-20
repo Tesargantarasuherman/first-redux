@@ -13,14 +13,13 @@ class PostList extends Component {
                 <>
                     <UserHeader userId={post.userId} title={post.title} />
                     <h5>
-                        {index+1} {post.title}
+                        {index+1} {post.body}
                     </h5>
                 </>
             )
         })
     }
     render() {
-        console.log(this.props.posts)
         return (
             <div>
                     {this.renderList()}

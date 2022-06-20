@@ -1,22 +1,32 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchUser } from '../actions'
-export class UserHeader extends Component {
+class UserHeader extends Component {
+    componentDidMount(){
+        this.props.fetchUser(this.props.userId)
+    }
   render() {
-    const user =this.props.users.find((user)=>user.id ==this.props.userId )
-    console.log('userId',this.props.title)
+    if(!this.props.users){
+        <div>Loading...</div>
+    }
     return (
-      <div>UserHeader</div>
+        <>
+            <div>{this.props.users?.name}</div>
+            <div>{this.props.title}</div>
+        </>
     )
   }
 }
 
-const mapStateToProps = (state) => {
-    return {users:state.users}
+const mapStateToProps = (state,ownProps) => {
+    return {
+        users:state.users.find(user=>user.id ==ownProps.userId ),
+        title:ownProps.title
+    }
 }
 
 const mapDispatchToProps = dispatch=>{
-    return {fetchUser:()=>dispatch(fetchUser)}
+    return {fetchUser:(userId)=>dispatch(fetchUser(userId))}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserHeader)

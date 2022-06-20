@@ -12,7 +12,6 @@ const songsReducer = () => {
 };
 
 const selectedSongReducer = (state = null, action) => {
-  console.log('action',action)
   switch (action.type) {
     case 'SONG_SELECTED':
       return action.payload;
