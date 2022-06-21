@@ -9,8 +9,17 @@ export const selectSong = (song) => {
     };
 };
 
-export const fetchPostAndUsers =()=>async dispatch=>{
+export const fetchPostAndUsers =()=>async (dispatch,getState)=>{
+    await dispatch(fetchPosts());
+    // const userIds = _.uniq(_.map(getState().posts,'userId'))
+    // userIds.forEach(id=>dispatch(fetchUser(id)));
     
+    _.chain(getState().posts)
+    .map('userId')
+    .uniq()
+    .forEach(id=>(fetchUser(id)))
+    .value();
+
 }
 
 export const fetchPosts = () => async dispatch => {
@@ -22,6 +31,7 @@ export const fetchPosts = () => async dispatch => {
 export const fetchUser = id => async dispatch=>{
     _fetchUser(id,dispatch);
 }
+
 // memoize
 // export const fetchUser = function (id) {
 //     return _.memoize(async function (dispatch) {

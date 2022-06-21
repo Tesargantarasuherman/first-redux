@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchUser } from '../actions'
 class UserHeader extends Component {
-    componentDidMount(){
-        this.props.fetchUser(this.props.userId)
-    }
+    // componentDidMount(){
+    //     this.props.fetchUser(this.props.userId)
+    // }
   render() {
     if(!this.props.users){
         <div>Loading...</div>
@@ -25,8 +25,8 @@ const mapStateToProps = (state,ownProps) => {
     }
 }
 
-const mapDispatchToProps = dispatch=>{
-    return {fetchUser:(userId)=>dispatch(fetchUser(userId))}
-}
+// const mapDispatchToProps = dispatch=>{
+//     return {fetchUser:(userId)=>dispatch(fetchUser(userId))}
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserHeader)
+export default connect(mapStateToProps)(UserHeader)
